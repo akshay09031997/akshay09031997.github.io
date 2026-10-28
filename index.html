@@ -1,161 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Akshay Kumar's portfolio covering application support, implementation, MySQL troubleshooting, data validation and developing analytics projects.">
-<title>Akshay Kumar | Application Support, SQL & Analytics</title>
+<meta name="description" content="Akshay Kumar's professional portfolio: application support, implementation, SQL/MySQL, testing, and data analytics projects and learning.">
+<title>Akshay Kumar | Application Support & Data Analytics Portfolio</title>
 <style>
-
 :root{
-  --ink:#15242c;--muted:#5c6b72;--paper:#f5f7f4;--white:#fff;
-  --night:#102b2b;--night2:#163d3b;--teal:#7de0c3;--lime:#d5f36a;
-  --accent:#ef795b;--line:#dce5df;--soft:#eaf0eb;--blue:#176b61;
-  --shadow:0 18px 50px rgba(16,43,43,.08)
+ --bg:#08111f;--panel:#101d30;--panel2:#13243a;--text:#edf4ff;--muted:#a9b8ce;
+ --line:rgba(173,196,226,.16);--teal:#62e6d1;--lime:#c8f169;--blue:#85b8ff;
+ --shadow:0 22px 70px rgba(0,0,0,.24);--radius:22px;--max:1160px
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.7;background:var(--paper)}
-a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:underline}
-.wrap{width:min(1160px,92%);margin:auto}
-header{position:sticky;top:0;background:rgba(245,247,244,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(220,229,223,.85);z-index:10}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:74px}
-.brand{display:flex;align-items:center;gap:11px;color:var(--night);font-weight:900;letter-spacing:.055em;white-space:nowrap;font-size:.91rem}
-.brand-mark{display:grid;place-items:center;width:35px;height:35px;background:var(--lime);color:var(--night);border-radius:11px;font-weight:950;letter-spacing:-.05em}
-.navlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;font-weight:650}
-.navlinks a{color:#344b4a}
-.navlinks a:hover{color:var(--blue)}
-.hero{position:relative;overflow:hidden;background:var(--night);color:#fff;padding:78px 0 68px}
-.hero:before{content:"";position:absolute;width:510px;height:510px;border:1px solid rgba(125,224,195,.2);border-radius:50%;right:-100px;top:-220px;box-shadow:0 0 0 48px rgba(125,224,195,.035),0 0 0 100px rgba(125,224,195,.025)}
-.hero:after{content:"";position:absolute;width:240px;height:240px;background:var(--accent);opacity:.12;border-radius:50%;right:19%;bottom:-190px;filter:blur(3px)}
-.hero-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.7fr);gap:55px;align-items:center}
-.eyebrow,.kicker{text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;font-weight:850}
-.eyebrow{color:var(--teal);display:flex;align-items:center;gap:10px}
-.eyebrow:before{content:"";width:27px;height:2px;background:var(--lime)}
-.hero h1{font-size:clamp(2.8rem,6vw,5.1rem);line-height:.99;letter-spacing:-.065em;max-width:780px;margin:22px 0}
-.hero h1 em{font-style:normal;color:var(--teal)}
-.hero p{max-width:740px;color:#d3e1db;font-size:1.03rem}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 17px;border-radius:8px;font-weight:800;font-size:.9rem;border:1px solid transparent;transition:transform .2s ease,background .2s ease}
-.btn:hover{transform:translateY(-2px);text-decoration:none}
-.btn-primary{background:var(--lime);color:var(--night)}
-.btn-outline{border-color:#52706b;color:#fff}
-.btn-outline:hover{background:rgba(255,255,255,.08)}
-.hero-meta{font-size:.84rem!important;color:#a9c2ba!important;margin-top:24px}
-.hero-panel{border:1px solid rgba(125,224,195,.24);background:rgba(255,255,255,.045);padding:25px;border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.12)}
-.panel-label{color:var(--teal);font-size:.69rem;text-transform:uppercase;letter-spacing:.14em;font-weight:850}
-.focus-item{padding:17px 0;border-bottom:1px solid rgba(255,255,255,.12)}
-.focus-item:last-child{border-bottom:0;padding-bottom:0}
-.focus-item strong{display:block;color:#fff;font-size:1.02rem}
-.focus-item span{display:block;color:#b7ccc4;font-size:.86rem;margin-top:3px}
-.focus-number{font-size:.72rem;color:var(--lime);font-weight:900;letter-spacing:.1em}
-section{padding:76px 0;scroll-margin-top:78px}
-.section-alt{background:#eaf0eb}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:27px}
-.kicker{color:var(--blue)}
-h2{font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.12;letter-spacing:-.045em;margin:9px 0 15px;color:var(--night)}
-h3{margin:0 0 8px;color:var(--night);line-height:1.35;letter-spacing:-.015em}
-h4{margin:15px 0 5px;color:var(--night)}
-p{margin-top:8px}
-.lead{font-size:1.06rem;max-width:900px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.card{position:relative;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:25px;box-shadow:0 3px 15px rgba(16,43,43,.025);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#c0d6cb}
-.card p{color:var(--muted);margin:8px 0}
-.card-index{font-size:.72rem;color:var(--blue);font-weight:900;letter-spacing:.12em;margin-bottom:14px}
-.taglist{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
-.tag{font-size:.76rem;background:#eaf4ef;color:#235c52;padding:5px 9px;border-radius:5px;font-weight:700}
-.small{font-size:.9rem;color:var(--muted)}
-.callout{border-left:3px solid var(--accent);background:#fff4ef;padding:17px 19px;border-radius:0 10px 10px 0;color:#57433c;margin:23px 0}
-.timeline{border-left:1px solid #b7ccc2;margin:28px 0 0 8px;padding-left:27px}
-.role{position:relative;margin:0 0 34px;padding:0 0 4px}
-.role:before{content:"";position:absolute;width:12px;height:12px;border-radius:4px;background:var(--accent);left:-34px;top:7px;box-shadow:0 0 0 5px #eaf0eb}
-.role ul,.card ul{margin:10px 0 0;padding-left:20px}
-.role li,.card li{margin:7px 0}
-.date{font-size:.86rem;color:var(--muted);font-weight:750;margin-bottom:10px}
-.status{display:inline-flex;align-items:center;font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;background:#fff0d8;color:#815319;padding:5px 9px;border-radius:5px;font-weight:900;margin-bottom:14px}
-.status.ready{background:#dff5e9;color:#1e6840}
-.project-card{display:flex;flex-direction:column;align-items:flex-start}
-.project-card .taglist{margin-top:auto;padding-top:14px}
-.project-card p{margin-bottom:14px}
-.steps{counter-reset:step;list-style:none;padding:0}
-.steps li{counter-increment:step;position:relative;padding:0 0 18px 48px}
-.steps li:before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:0;color:var(--blue);font-size:.8rem;font-weight:900;border-bottom:2px solid var(--lime);padding-bottom:4px}
-.contactbox{position:relative;overflow:hidden;background:var(--night);color:#fff;padding:38px;border-radius:18px}
-.contactbox:after{content:"AK";position:absolute;right:24px;bottom:-70px;font-size:15rem;line-height:1;font-weight:950;letter-spacing:-.1em;color:rgba(255,255,255,.035);pointer-events:none}
-.contactbox h2{color:#fff}
-.contactbox p{color:#c7d8d0;max-width:720px}
-.contact-links{position:relative;z-index:1;display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
-.contact-links a{color:var(--teal);text-decoration:underline}
-footer{padding:24px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);background:var(--paper)}
-@media(max-width:900px){.hero-layout{grid-template-columns:1fr;gap:30px}.hero-panel{max-width:600px}.section-head{display:block}.nav{align-items:flex-start;flex-direction:column;padding:13px 0}.navlinks{gap:12px 16px}.hero{padding:62px 0}.grid3{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.grid,.grid3{grid-template-columns:1fr}.hero h1{font-size:2.75rem}.card{padding:20px}section{padding:54px 0}.contactbox{padding:25px}.navlinks{font-size:.8rem;gap:9px 13px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.btn{transition:none}}
-
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:radial-gradient(ellipse at 80% 0%,rgba(42,108,142,.22),transparent 34%),radial-gradient(ellipse at 0% 30%,rgba(67,88,155,.14),transparent 30%),var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--teal);text-decoration:none}a:hover{color:var(--lime)}button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+.nav{position:sticky;top:0;z-index:10;background:rgba(8,17,31,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navinner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:800;letter-spacing:-.04em;color:var(--text);font-size:1.08rem}.brand span{color:var(--teal)}
+.navlinks{display:flex;gap:20px;align-items:center;font-size:.88rem;color:var(--muted)}.navlinks a{color:var(--muted)}.navlinks a:hover{color:var(--teal)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:10px}
+.hero{padding:76px 0 58px;position:relative}.heroGrid{display:grid;grid-template-columns:1.4fr .8fr;gap:36px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--teal);text-transform:uppercase;letter-spacing:.15em;font-size:.76rem;font-weight:800}
+.dot{height:8px;width:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px var(--lime)}
+h1{font-size:clamp(2.8rem,6vw,5.2rem);line-height:1.02;letter-spacing:-.065em;margin:18px 0 20px;max-width:800px}
+.gradient{background:linear-gradient(100deg,var(--teal),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.15rem;color:#c4d1e4;max-width:760px;line-height:1.8}.heroActions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 17px;border-radius:13px;font-weight:750;border:1px solid var(--line);transition:.2s;cursor:pointer}
+.btn.primary{background:linear-gradient(120deg,var(--teal),var(--lime));color:#08111f;border:0}.btn.secondary{background:rgba(255,255,255,.035);color:var(--text)}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.heroNote{font-size:.88rem;color:var(--muted)}
+.profileCard{background:linear-gradient(145deg,rgba(98,230,209,.10),rgba(133,184,255,.06)),var(--panel);border:1px solid var(--line);padding:28px;border-radius:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.profileCard:after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(98,230,209,.22);border-radius:50%;right:-70px;top:-70px;box-shadow:0 0 0 22px rgba(98,230,209,.025),0 0 0 46px rgba(98,230,209,.02)}
+.avatar{height:76px;width:76px;border-radius:22px;background:linear-gradient(140deg,var(--teal),var(--lime));display:grid;place-items:center;color:#08111f;font-weight:900;font-size:1.55rem;letter-spacing:-.06em;margin-bottom:20px}
+.profileCard h2{font-size:1.45rem;margin:0 0 4px;letter-spacing:-.03em}.profileCard .sub{color:var(--muted);font-size:.9rem}
+.quickStats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.stat{padding:15px;border:1px solid var(--line);background:rgba(3,11,23,.24);border-radius:15px}.stat strong{display:block;font-size:1.25rem;letter-spacing:-.03em}.stat span{color:var(--muted);font-size:.8rem}
+.section{padding:54px 0}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:24px}
+.kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.16em;color:var(--teal);font-weight:800}
+h2.sectionTitle{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.05em;margin:8px 0 0}
+.sectionIntro{max-width:560px;color:var(--muted);margin:0}
+.grid{display:grid;gap:16px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.025),transparent 65%),var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 10px 35px rgba(0,0,0,.10)}
+.card h3{margin:0 0 10px;font-size:1.13rem;letter-spacing:-.025em}.card p{margin:0;color:var(--muted)}.card p+p{margin-top:10px}
+.iconbox{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:rgba(98,230,209,.09);color:var(--teal);font-size:1.2rem;margin-bottom:17px}
+.taglist{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.tag{font-size:.77rem;border:1px solid var(--line);background:rgba(255,255,255,.025);padding:5px 9px;border-radius:999px;color:#cbd8eb}
+.skillGroup{display:flex;flex-direction:column;gap:12px}.skillTop{display:flex;justify-content:space-between;gap:12px;font-size:.92rem}.skillTop span:last-child{color:var(--muted);font-size:.8rem}.skillBar{height:7px;background:#22334a;border-radius:99px;overflow:hidden}.skillBar span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--lime));border-radius:99px}
+.callout{border:1px solid rgba(98,230,209,.22);background:linear-gradient(120deg,rgba(98,230,209,.07),rgba(200,241,105,.035));border-radius:18px;padding:18px 20px;color:#d8e6f7}
+.timeline{position:relative;padding-left:27px}.timeline:before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:1px;background:linear-gradient(var(--teal),rgba(98,230,209,.08))}
+.role{position:relative;margin-bottom:18px}.role:last-child{margin-bottom:0}.role:before{content:"";position:absolute;left:-26px;top:25px;width:10px;height:10px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px rgba(98,230,209,.1)}
+.roleHead{display:flex;justify-content:space-between;gap:16px;align-items:start}.role h3{margin:0;font-size:1.13rem}.company{color:var(--teal);font-weight:650}.date{white-space:nowrap;color:var(--muted);font-size:.82rem;border:1px solid var(--line);border-radius:99px;padding:5px 10px}
+ul.clean{padding-left:19px;margin:12px 0 0;color:#c4d1e4}ul.clean li{padding:3px 0}li::marker{color:var(--teal)}
+.caseNo{font-size:.78rem;color:var(--teal);font-weight:850;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px}
+.caseFlow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.caseStep{border-radius:13px;padding:13px;background:rgba(255,255,255,.035);border:1px solid var(--line)}.caseStep strong{display:block;font-size:.8rem;color:var(--teal);margin-bottom:5px}.caseStep span{display:block;font-size:.82rem;color:var(--muted)}
+.code{white-space:pre-wrap;overflow-wrap:anywhere;background:#07101d;border:1px solid var(--line);border-radius:14px;padding:18px;color:#d9e9ff;font: .84rem/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;margin:14px 0 0}
+.tableWrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}.table{border-collapse:collapse;width:100%;min-width:620px;background:var(--panel)}.table th,.table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}.table th{font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--teal);background:rgba(255,255,255,.025)}.table td{color:#c4d1e4;font-size:.9rem}.table tr:last-child td{border-bottom:0}
+.pill{display:inline-block;padding:4px 9px;border-radius:99px;font-size:.73rem;font-weight:750}.pill.pro{background:rgba(98,230,209,.12);color:var(--teal)}.pill.learn{background:rgba(200,241,105,.12);color:var(--lime)}
+.projectHeader{display:flex;justify-content:space-between;gap:12px;align-items:start}.projectHeader .tag{white-space:nowrap}
+.projectMeta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;margin:14px 0}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{counter-increment:step;border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:17px}.step:before{content:"0" counter(step);display:block;color:var(--teal);font-weight:900;font-size:.8rem;letter-spacing:.12em;margin-bottom:13px}.step strong{display:block;margin-bottom:5px}.step p{margin:0;color:var(--muted);font-size:.87rem}
+.edu{display:flex;gap:16px;align-items:start}.eduYear{min-width:48px;height:48px;border-radius:14px;background:rgba(133,184,255,.10);color:var(--blue);display:grid;place-items:center;font-weight:850;font-size:.78rem}.edu h3{margin:0 0 3px}.edu p{font-size:.88rem}
+.contact{padding:35px;background:linear-gradient(120deg,rgba(98,230,209,.09),rgba(133,184,255,.06)),var(--panel);border:1px solid var(--line);border-radius:26px;display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:center}
+.contactLinks{display:grid;gap:10px}.contactLink{padding:13px 15px;border-radius:13px;border:1px solid var(--line);background:rgba(3,11,23,.18);overflow-wrap:anywhere}.contactLink small{display:block;color:var(--muted);font-size:.73rem;text-transform:uppercase;letter-spacing:.1em}.contactLink strong{font-size:.92rem;font-weight:650}
+footer{padding:30px 0 45px;color:var(--muted);font-size:.83rem}.foot{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.top{position:fixed;bottom:22px;right:22px;background:var(--teal);color:#07111d;border:0;border-radius:50%;width:44px;height:44px;font-weight:900;box-shadow:var(--shadow);cursor:pointer}
+.note{color:var(--muted);font-size:.82rem}.divider{height:1px;background:var(--line);margin:22px 0}
+@media(max-width:900px){.heroGrid{grid-template-columns:1fr}.profileCard{max-width:640px}.grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,1fr)}.sectionHead{display:block}.sectionIntro{margin-top:12px}.contact{grid-template-columns:1fr}}
+@media(max-width:650px){.wrap{width:min(100% - 28px,var(--max))}.navinner{height:64px}.menu{display:block}.navlinks{display:none;position:absolute;top:64px;left:0;right:0;background:#0b1728;padding:16px 22px 20px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{padding:54px 0 35px}.grid.two,.grid.three{grid-template-columns:1fr}.card{padding:20px}.roleHead{display:block}.date{display:inline-block;margin-top:8px}.caseFlow{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.quickStats{gap:8px}.stat{padding:12px}.section{padding:40px 0}.contact{padding:23px}.projectHeader{display:block}.projectHeader .tag{display:inline-block;margin-top:8px}}
+@media print{body{background:#fff;color:#111}.nav,.top,.heroActions{display:none}.hero,.section{padding:24px 0}.card,.profileCard,.contact,.table{background:#fff;color:#111;box-shadow:none;border-color:#ccc}.lead,.card p,.note,.table td,ul.clean,.sectionIntro{color:#333}a{color:#075e59}.tag{color:#333}.heroGrid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="brand" href="#home"><span class="brand-mark">AK</span><span>AKSHAY KUMAR</span></a><nav class="navlinks" aria-label="Main navigation"><a href="#about">About</a><a href="#skills">Skills</a><a href="#services">What I Do</a><a href="#testing">Testing</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a></nav></div></header>
-<main>
-<section class="hero" id="home"><div class="wrap hero-layout"><div><div class="eyebrow">Support-minded · Data-curious · Detail-oriented</div><h1>Solving software issues.<br><em>Making data make sense.</em></h1><p>I'm Akshay Kumar, a technical support and implementation professional with hands-on experience in business and healthcare applications, MySQL-based data investigation, manual testing, client coordination and end-user training. I'm building practical analytics projects on top of that real-world foundation.</p><div class="actions"><a class="btn btn-primary" href="#projects">Explore case studies <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#experience">Career timeline</a></div><p class="hero-meta">Based in Kerala, India · Open to Application Support, Production Support, SQL Support and junior Data Analyst opportunities</p></div><aside class="hero-panel" aria-label="Professional focus"><div class="panel-label">Professional focus</div><div class="focus-item"><div class="focus-number">01 / INVESTIGATE</div><strong>Application & data troubleshooting</strong><span>Trace symptoms through workflows, logs, configurations and relevant MySQL records.</span></div><div class="focus-item"><div class="focus-number">02 / VALIDATE</div><strong>Testing & data quality</strong><span>Check expected versus actual behavior, validate records and retest fixes.</span></div><div class="focus-item"><div class="focus-number">03 / ENABLE</div><strong>Implementation & users</strong><span>Support setup, onboarding, training and post-implementation follow-up.</span></div></aside></div></section>
+<header class="nav">
+ <div class="wrap navinner">
+  <a class="brand" href="#home">AK<span>.</span> PORTFOLIO</a>
+  <button class="menu" id="menuBtn" aria-label="Toggle navigation">Menu ☰</button>
+  <nav class="navlinks" id="navlinks">
+   <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#testing">Testing</a><a href="#analytics">Data Analytics</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  </nav>
+ </div>
+</header>
 
-<section id="about"><div class="wrap"><div class="kicker">01 / About me</div><h2>Practical troubleshooting experience, with a data-focused mindset</h2><p class="lead">My professional background is in technical support and implementation at TouchQ Software Solutions Pvt. Ltd. I have supported business and healthcare software workflows, helped clients resolve application issues, investigated data discrepancies, performed MySQL checks and authorized data corrections, assisted with application setup and configuration, and supported onboarding and end-user training.</p><p class="lead">I approach support issues by understanding the reported problem, checking the relevant workflow and records, validating the result, and communicating the outcome clearly. I am now extending this foundation through structured practice in data analysis, reporting and business intelligence.</p><div class="callout"><strong>Portfolio approach:</strong> Professional support experience is presented separately from learning projects. Any planned project below is clearly marked until it has been completed and tested. No employer or customer data is included.</div></div></section>
+<main id="home">
+<section class="hero">
+ <div class="wrap heroGrid">
+  <div>
+   <div class="eyebrow"><span class="dot"></span> Application Support · Implementation · Data Analytics</div>
+   <h1>Akshay Kumar<span class="gradient">.</span><br><span class="gradient">Support that solves.</span></h1>
+   <p class="lead">Application Support & Implementation professional with approximately four years of experience troubleshooting business and healthcare applications, investigating MySQL data issues, supporting deployments, validating records, testing fixes, and coordinating with users and technical teams. Building a complementary Data Analytics portfolio through SQL, Excel, Python and Power BI learning.</p>
+   <div class="heroActions">
+    <a class="btn primary" href="#projects">Explore my work ↘</a>
+    <a class="btn secondary" href="#contact">Contact me</a>
+    <button class="btn secondary" onclick="window.print()">Print / Save as PDF</button>
+   </div>
+   <p class="heroNote">Kerala, India · Open to application support, production support, SQL support, implementation and entry-level analytics opportunities.</p>
+  </div>
+  <aside class="profileCard">
+   <div class="avatar">AK</div>
+   <h2>Professional Snapshot</h2>
+   <div class="sub">Technical Support · Application Implementation · SQL / MySQL</div>
+   <div class="quickStats">
+    <div class="stat"><strong>~4 years</strong><span>Support & implementation experience</span></div>
+    <div class="stat"><strong>100+</strong><span>Clients supported (reported)</span></div>
+    <div class="stat"><strong>L1 / L2</strong><span>Application troubleshooting</span></div>
+    <div class="stat"><strong>SQL-first</strong><span>Data investigation & validation</span></div>
+   </div>
+   <div class="taglist"><span class="tag">Healthcare software</span><span class="tag">Business applications</span><span class="tag">Manual testing</span><span class="tag">Data quality</span></div>
+  </aside>
+ </div>
+</section>
 
-<section class="section-alt" id="skills"><div class="wrap"><div class="kicker">02 / Technical toolkit</div><h2>Skills and areas of experience</h2><div class="grid">
-<div class="card"><h3>Application & Production Support</h3><p>Application troubleshooting, issue investigation, client support, log checks, build/configuration checks, escalation follow-up, and technical coordination.</p><div class="taglist"><span class="tag">Application Support</span><span class="tag">Incident Investigation</span><span class="tag">Troubleshooting</span><span class="tag">Client Coordination</span></div></div>
-<div class="card"><h3>MySQL & Data Troubleshooting</h3><p>Writing SQL queries, comparing records, checking missing or incorrect values, investigating data discrepancies, validating updates and supporting data corrections with appropriate approval.</p><div class="taglist"><span class="tag">MySQL</span><span class="tag">Complex Queries</span><span class="tag">Data Validation</span><span class="tag">Reconciliation</span></div></div>
-<div class="card"><h3>Implementation & User Enablement</h3><p>Application installation and configuration, implementation assistance, workflow understanding, user onboarding, training, manual testing and post-implementation support.</p><div class="taglist"><span class="tag">Implementation</span><span class="tag">Configuration</span><span class="tag">User Training</span><span class="tag">Manual Testing</span></div></div>
-<div class="card"><h3>Application & Business Workflows</h3><p>Exposure to healthcare and business application modules, including EMR, PMS, billing, inventory, accounts, front office and HRMS support contexts.</p><div class="taglist"><span class="tag">EMR</span><span class="tag">PMS</span><span class="tag">Billing</span><span class="tag">Inventory</span><span class="tag">HRMS Support</span></div></div>
-<div class="card"><h3>Tools & Technical Environment</h3><p>MySQL tools, Excel and Word, application/server checks, IIS and AWS-related support exposure, and Tally Prime import or integration checks where applicable.</p><div class="taglist"><span class="tag">MySQL Workbench</span><span class="tag">Excel</span><span class="tag">Word</span><span class="tag">IIS</span><span class="tag">AWS Exposure</span></div></div>
-<div class="card"><h3>Software Testing & Quality Checks</h3><p>Manual application testing, reproducing reported issues, checking expected versus actual results, validating fixes, retesting affected workflows and documenting findings for follow-up.</p><div class="taglist"><span class="tag">Manual Testing</span><span class="tag">Functional Testing</span><span class="tag">Retesting</span><span class="tag">Regression Checks</span><span class="tag">Defect Reproduction</span></div></div>
-<div class="card"><h3>Developing Analytics Skills</h3><p>Learning and building practical examples in reporting, data visualization and data processing. These are development areas, not claimed as professional analytics experience.</p><div class="taglist"><span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">ETL Basics</span><span class="tag">Data Analysis</span></div></div>
-</div><p class="small" style="margin-top:18px">Accuracy note: Power BI, Python and ETL are learning areas. MS SQL Server is working knowledge rather than established professional experience. Add only tools and skills you can confidently explain in an interview.</p></div></section>
+<section class="section" id="about">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">01 / About</div><h2 class="sectionTitle">A support engineer with a data mindset.</h2></div><p class="sectionIntro">I connect user-facing problem solving with careful backend investigation—understanding the issue, validating the data, testing a fix, and confirming the result.</p></div>
+  <div class="grid two">
+   <article class="card"><div class="iconbox">⌘</div><h3>Application support & implementation</h3><p>Experience supporting healthcare and business software workflows, gathering requirements, assisting installations and configurations, onboarding users, providing remote and onsite support, and coordinating issue resolution through to verification.</p><p>Worked across product areas such as EMR, PMS, billing, inventory, accounts, front office and related operational modules, with additional HRMS support exposure.</p></article>
+   <article class="card"><div class="iconbox">⌁</div><h3>Database troubleshooting & analysis</h3><p>Use MySQL to investigate data-related issues, compare records, validate transactions, review financial inconsistencies, and perform approved data corrections. Focus on understanding the cause before changing production data.</p><p>My analytics direction builds on this practical foundation: SQL querying, Excel-based review, data quality, reporting logic, and structured business questions.</p></article>
+  </div>
+  <div class="callout" style="margin-top:16px"><strong>Working principle:</strong> reproduce and understand the issue → inspect logs/configuration/data → validate the suspected cause → test the proposed correction → confirm the application and database results → document the outcome.</div>
+ </div>
+</section>
 
-<section id="services"><div class="wrap"><div class="kicker">03 / What I do</div><h2>How I can contribute</h2><div class="grid3">
-<div class="card"><h3>Investigate application issues</h3><p>Collect issue details, reproduce or trace the reported behavior, check relevant application logs and configurations, and coordinate with technical teams when escalation is needed.</p></div>
-<div class="card"><h3>Validate data and discrepancies</h3><p>Use SQL queries and record comparisons to investigate unexpected values, reconcile related records, and verify results after an approved correction.</p></div>
-<div class="card"><h3>Support implementation and users</h3><p>Assist with setup, configuration, testing, onboarding, workflow explanations, user training and post-implementation follow-up.</p></div>
-</div></div></section>
+<section class="section" id="skills">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">02 / Skills</div><h2 class="sectionTitle">Tools, technologies & strengths.</h2></div><p class="sectionIntro">Skills are grouped by professional use and current learning so the portfolio stays transparent about experience levels.</p></div>
+  <div class="grid three">
+   <article class="card"><div class="iconbox">SQL</div><h3>SQL & MySQL</h3><p>Professional use for application data investigation, complex queries, comparisons, updates, imports, reconciliation and data validation.</p><div class="taglist"><span class="tag">SELECT / WHERE</span><span class="tag">JOINs</span><span class="tag">Subqueries</span><span class="tag">Aggregations</span><span class="tag">UPDATE / INSERT</span><span class="tag">Record comparison</span></div></article>
+   <article class="card"><div class="iconbox">▤</div><h3>Data validation & reporting</h3><p>Compare application output against stored data, inspect missing or incorrect values, check transaction references and validate financial/reporting discrepancies.</p><div class="taglist"><span class="tag">Reconciliation</span><span class="tag">Data quality</span><span class="tag">Exception checks</span><span class="tag">Excel</span></div></article>
+   <article class="card"><div class="iconbox">⚙</div><h3>Application support</h3><p>L1/L2 troubleshooting, incident investigation, user guidance, ticket follow-up, issue escalation and coordination with technical teams.</p><div class="taglist"><span class="tag">Issue triage</span><span class="tag">RCA approach</span><span class="tag">Remote support</span><span class="tag">Client calls</span></div></article>
+   <article class="card"><div class="iconbox">⇧</div><h3>Implementation & deployment</h3><p>Installation and configuration assistance, application-server checks, build/update verification, user onboarding and post-implementation support.</p><div class="taglist"><span class="tag">IIS exposure</span><span class="tag">AWS exposure</span><span class="tag">Configuration checks</span><span class="tag">Logs</span></div></article>
+   <article class="card"><div class="iconbox">✓</div><h3>Testing & quality</h3><p>Manual testing, reproducing reported issues, validating expected results, retesting fixes and checking application data before and after a change.</p><div class="taglist"><span class="tag">Test scenarios</span><span class="tag">Retesting</span><span class="tag">Regression checks</span><span class="tag">Data validation</span></div></article>
+   <article class="card"><div class="iconbox">▦</div><h3>Business tools & databases</h3><p>Microsoft Excel and Word; Tally Prime import/integration and tax-related checks; MS SQL Server / SSMS at working-knowledge level.</p><div class="taglist"><span class="tag">Excel</span><span class="tag">Word</span><span class="tag">Tally Prime checks</span><span class="tag">MS SQL — working knowledge</span></div></article>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+   <article class="card"><h3>Professional strengths</h3><div class="taglist"><span class="tag">Analytical thinking</span><span class="tag">Structured troubleshooting</span><span class="tag">Client communication</span><span class="tag">Requirement gathering</span><span class="tag">User training</span><span class="tag">Technical coordination</span><span class="tag">Documentation</span><span class="tag">Team guidance</span></div></article>
+   <article class="card"><h3>Analytics tools — current learning</h3><p>Python/pandas, Power BI, data modelling, DAX and ETL concepts are learning / portfolio-development areas, not presented as established professional experience.</p><div class="taglist"><span class="tag">Python fundamentals</span><span class="tag">pandas practice</span><span class="tag">Power Query</span><span class="tag">Power BI visuals</span><span class="tag">ETL fundamentals</span></div></article>
+  </div>
+ </div>
+</section>
 
-<section id="testing"><div class="wrap"><div class="kicker">Testing & quality assurance</div><h2>Testing application behavior and validating fixes</h2><p class="lead">Testing is an important part of application support and implementation. My experience includes manual testing and checking application workflows as part of issue investigation, configuration, updates and implementation support.</p><div class="grid">
-<div class="card"><h3>Functional testing</h3><p>Check whether application features and business workflows behave as expected based on the requirement or reported issue.</p><ul><li>Understand the expected result and reproduce the steps.</li><li>Compare actual behavior with expected behavior.</li><li>Record clear steps and observations for follow-up.</li></ul></div>
-<div class="card"><h3>Retesting fixes</h3><p>Verify a reported issue after a fix, configuration change or update has been applied.</p><ul><li>Repeat the original steps that triggered the issue.</li><li>Confirm the reported problem no longer occurs.</li><li>Check related workflows where appropriate.</li></ul></div>
-<div class="card"><h3>Regression and workflow checks</h3><p>Perform relevant checks around connected features after a change, to help identify unintended side effects.</p><ul><li>Check related modules and key user workflows.</li><li>Validate important inputs, outputs and status changes.</li><li>Record any new or recurring issues.</li></ul></div>
-<div class="card"><h3>Database and report validation</h3><p>Use SQL and record comparisons to help confirm whether application output aligns with stored data and expected business rules.</p><ul><li>Compare selected records and totals.</li><li>Check for missing, duplicate or unexpected values.</li><li>Revalidate results after approved corrections.</li></ul></div>
-</div><div class="callout"><strong>Portfolio evidence to add:</strong> Create a small fictional test-case document with columns for Test Case ID, Scenario, Preconditions, Steps, Expected Result, Actual Result, Status and Notes. You can include examples such as login validation, required-field checks, transaction status changes, report totals and retesting a fix. Only claim test types and tools you have actually used.</div></div></section>
+<section class="section" id="experience">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">03 / Experience</div><h2 class="sectionTitle">Career progression at TouchQ.</h2></div><p class="sectionIntro">Four roles shown separately to reflect progression from trainee support through senior support and implementation responsibilities.</p></div>
+  <div class="grid two">
+   <div class="card"><div class="timeline">
+    <div class="role"><div class="roleHead"><div><h3>Senior Support & Implementation Engineer</h3><div class="company">TouchQ Software Solutions Pvt. Ltd. · Kochi</div></div><span class="date">19 Jan 2026 – 2 Jun 2026</span></div><ul class="clean"><li>Led support and implementation activities across client locations and coordinated resolution of application issues.</li><li>Helped supervise daily support operations and guided junior engineers and trainees on application workflows and troubleshooting.</li><li>Supported requirement discussions, client onboarding, end-user training and post-implementation follow-up.</li><li>Investigated complex data and financial-report issues using MySQL validation and structured checks.</li><li>Coordinated with internal technical teams on builds, configuration, server and application issues.</li></ul></div>
+    <div class="role"><div class="roleHead"><div><h3>Support Engineer</h3><div class="company">TouchQ Software Solutions Pvt. Ltd. · Kochi</div></div><span class="date">19 Jan 2024 – 18 Jan 2026</span></div><ul class="clean"><li>Provided ongoing application support for healthcare and business software modules, investigating functional and data-related issues.</li><li>Used MySQL to compare, validate and correct records after appropriate authorization.</li><li>Assisted installations, application/server configuration checks, updates and issue reproduction.</li><li>Performed manual testing and retesting, validated reported fixes and supported user workflows remotely and onsite.</li><li>Helped clients with application usage, data imports, financial checks and operational questions.</li></ul></div>
+   </div></div>
+   <div class="card"><div class="timeline">
+    <div class="role"><div class="roleHead"><div><h3>Junior Support Engineer</h3><div class="company">TouchQ Software Solutions Pvt. Ltd. · Kochi</div></div><span class="date">19 Jan 2023 – 18 Jan 2024</span></div><ul class="clean"><li>Handled application support requests and gathered clear information from users to reproduce issues.</li><li>Checked application data and performed record comparisons and validation using MySQL.</li><li>Supported installation, configuration, routine checks, user guidance and escalation of unresolved issues.</li><li>Assisted in testing updates and confirming whether reported problems were resolved.</li><li>Maintained communication with clients and internal teams during issue resolution.</li></ul></div>
+    <div class="role"><div class="roleHead"><div><h3>Trainee – Technical Support</h3><div class="company">TouchQ Software Solutions Pvt. Ltd. · Kochi</div></div><span class="date">19 Jul 2022 – 18 Jan 2023</span></div><ul class="clean"><li>Learned the company’s applications, support processes and customer workflows under team guidance.</li><li>Assisted with basic troubleshooting, issue documentation, data checks and end-user guidance.</li><li>Built familiarity with application modules, testing practices and structured escalation.</li><li>Supported the team with routine client queries and implementation-related activities.</li></ul></div>
+   </div></div>
+  </div>
+  <div class="callout" style="margin-top:16px"><strong>Scope of experience:</strong> EMR / PMS, billing, inventory, accounts, front office, clinic and related healthcare workflows; HRMS support exposure; client coordination, remote and onsite support, training, implementation and data validation. Reported client base: 100+.</div>
+ </div>
+</section>
 
-<section class="section-alt" id="projects"><div class="wrap"><div class="kicker">05 / Selected work</div><h2>Projects & case studies</h2><p class="lead">This section is designed to show how I investigate problems and communicate results. Add sanitized query samples, screenshots, findings and repository links as each item is ready. Do not publish proprietary SQL or production records from an employer.</p><div class="grid">
-<div class="card project-card"><span class="status">To document</span><h3>01 · Complex MySQL Query Case Study</h3><p>Document an existing complex query project without exposing confidential source code. Explain the business question, tables and relationships at a high level, operations used, validation approach, expected output and how edge cases are handled.</p><h4>Suggested evidence</h4><ul><li>Sanitized schema or fictional sample tables</li><li>Short, non-sensitive query excerpts</li><li>Explanation of joins, subqueries, aggregations, conditional logic or other operations actually used</li><li>Before/after validation using fictional data</li></ul><div class="taglist"><span class="tag">MySQL</span><span class="tag">Complex SQL</span><span class="tag">Data Quality</span></div></div>
-<div class="card project-card"><span class="status">Case study idea</span><h3>02 · Financial Data Discrepancy Investigation</h3><p>A fictionalized support scenario showing a report mismatch and a structured investigation across dates, transaction records, ledger mappings, status flags and opening balances—only include checks that reflect your real process.</p><h4>Suggested evidence</h4><ul><li>Problem statement and impact</li><li>Investigation checklist and sample SQL</li><li>Reconciliation and validation steps</li><li>Resolution confirmation and prevention notes</li></ul><div class="taglist"><span class="tag">SQL Validation</span><span class="tag">Troubleshooting</span><span class="tag">RCA</span></div></div>
-<div class="card project-card"><span class="status">Planned</span><h3>03 · Support Ticket Dashboard</h3><p>Use fictional ticket data to analyze ticket volume, priority, status, resolution time and monthly trends. Summarize the operational insights rather than only showing charts.</p><div class="taglist"><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">KPIs</span></div></div>
-<div class="card project-card"><span class="status">Planned</span><h3>04 · CSV Data Cleaning & ETL</h3><p>Import a public or synthetic CSV, standardize fields, identify duplicates, validate required columns, document transformation rules and export the cleaned result.</p><div class="taglist"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">ETL Basics</span></div></div>
-</div><div class="callout"><strong>Important:</strong> The project labels are intentionally honest. Do not mark an item as completed until you have created the artifacts and checked the results. A well-explained, real project is more valuable than several unverified project claims.</div></div></section>
+<section class="section" id="domains">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">04 / Application domains</div><h2 class="sectionTitle">Understanding the workflows behind the software.</h2></div><p class="sectionIntro">Support is more effective when the technical symptom is understood in its business context.</p></div>
+  <div class="grid three">
+   <article class="card"><h3>Healthcare / EMR / PMS</h3><p>Patient registration and case history, consultation and treatment scheduling, doctor and front-office workflows, pharmacy, lab, store, nursing and cash collection processes.</p></article>
+   <article class="card"><h3>Finance & accounts</h3><p>Ledger and account checks, transaction IDs, dates, voucher types, opening balances, status flags, financial report consistency and reconciliation between records and displayed reports.</p></article>
+   <article class="card"><h3>Inventory & operations</h3><p>Inventory and store workflows, imports, cross-module data consistency, operational records and validation of data used by reports and day-to-day processes.</p></article>
+   <article class="card"><h3>HRMS support exposure</h3><p>Application support exposure for HRMS workflows, including employee-related application areas. Detailed module ownership should be confirmed before adding more specific claims.</p></article>
+   <article class="card"><h3>Implementation & training</h3><p>Requirement gathering, setup and configuration assistance, onboarding, end-user training, workflow walkthroughs and post-go-live support.</p></article>
+   <article class="card"><h3>Integrations & environments</h3><p>Tally Prime import/integration checks, IIS and AWS exposure, application build/configuration checks, logs, server availability and environment troubleshooting.</p></article>
+  </div>
+ </div>
+</section>
 
-<section id="experience"><div class="wrap"><div class="kicker">06 / Professional experience</div><h2>TouchQ Software Solutions Pvt. Ltd.</h2><p class="lead">Technical Support Department · Kochi, Kerala · 19 July 2022 – 2 June 2026</p><p class="small">The four positions below are kept separate to show career progression. Review each bullet and edit anything that does not accurately match your responsibilities.</p><div class="timeline">
-<div class="role"><h3>Senior Support & Implementation Engineer</h3><div class="date">19 Jan 2026 – 2 Jun 2026</div><ul><li>Supported implementation and client-facing technical activities across application deployments and workflows.</li><li>Helped coordinate day-to-day support operations and guide junior team members on application issues and support processes.</li><li>Assisted with client onboarding, user training and post-implementation follow-up.</li><li>Investigated application and data issues and coordinated with relevant technical stakeholders to progress resolution.</li></ul></div>
-<div class="role"><h3>Support Engineer</h3><div class="date">19 Jan 2024 – 18 Jan 2026</div><ul><li>Handled application troubleshooting across business and healthcare software modules, supporting users through reported issues and workflow questions.</li><li>Used MySQL queries and record comparisons to investigate data discrepancies and validate corrections made with appropriate authorization.</li><li>Checked application configurations, logs, builds, imports and server-related issues as part of troubleshooting.</li><li>Performed manual application and workflow checks during installation, updates and implementation; retested reported issues and validated results where applicable.</li><li>Coordinated with clients and provided end-user training.</li></ul></div>
-<div class="role"><h3>Junior Support Engineer</h3><div class="date">19 Jan 2023 – 18 Jan 2024</div><ul><li>Provided application support and helped investigate user-reported issues across assigned application modules.</li><li>Assisted with data checks, record validation, issue reproduction and follow-up with senior team members.</li><li>Supported installation, configuration, manual testing, user guidance and implementation tasks.</li><li>Assisted in reproducing reported issues and checking application behavior against expected results.</li></ul></div>
-<div class="role"><h3>Trainee – Technical Support</h3><div class="date">19 Jul 2022 – 18 Jan 2023</div><ul><li>Built familiarity with the company's software modules, customer workflows and technical support processes.</li><li>Assisted senior engineers with issue tracking, troubleshooting, application testing, documentation and user support.</li><li>Developed foundational experience in client communication and structured problem investigation.</li></ul></div>
-</div></div></section>
+<section class="section" id="testing">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">05 / Testing & validation</div><h2 class="sectionTitle">Testing is part of the resolution—not an afterthought.</h2></div><p class="sectionIntro">A fix is not complete until the affected workflow and data are checked again.</p></div>
+  <div class="steps">
+   <div class="step"><strong>Understand & reproduce</strong><p>Collect steps, user inputs, timestamps, affected module and expected versus actual behavior.</p></div>
+   <div class="step"><strong>Inspect & isolate</strong><p>Review configuration, logs, input data, database records and recent changes to narrow the cause.</p></div>
+   <div class="step"><strong>Test the correction</strong><p>Validate the proposed fix with relevant test scenarios, authorized data checks and repeatable steps.</p></div>
+   <div class="step"><strong>Retest & close</strong><p>Confirm the application output, data integrity and related workflows; document findings and communicate the outcome.</p></div>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+   <article class="card"><h3>Testing activities represented</h3><ul class="clean"><li>Manual functional testing of application workflows.</li><li>Issue reproduction and expected/actual result comparison.</li><li>Retesting fixes after builds or configuration changes.</li><li>Regression checks for related features and workflows.</li><li>Database validation against front-end/report output.</li><li>Import checks, duplicate/missing-value checks and financial data consistency checks.</li></ul></article>
+   <article class="card"><h3>Example test record template</h3><div class="tableWrap"><table class="table"><thead><tr><th>Field</th><th>What to capture</th></tr></thead><tbody><tr><td>Scenario</td><td>Workflow or reported defect being tested</td></tr><tr><td>Preconditions</td><td>Environment, user role, data setup</td></tr><tr><td>Steps</td><td>Repeatable actions and input values</td></tr><tr><td>Expected result</td><td>Correct screen, report or database state</td></tr><tr><td>Actual result</td><td>Observed result and evidence</td></tr><tr><td>Status</td><td>Pass / fail / blocked; retest result</td></tr></tbody></table></div><p class="note" style="margin-top:12px">This is a reusable template, not a claim that every historical issue was recorded in this exact format.</p></article>
+  </div>
+ </div>
+</section>
 
-<section class="section-alt" id="approach"><div class="wrap"><div class="kicker">How I work</div><h2>A structured approach to troubleshooting</h2><div class="grid">
-<div class="card"><h3>1. Understand</h3><p>Clarify the symptoms, expected behavior, affected users, timing and business impact.</p></div>
-<div class="card"><h3>2. Investigate</h3><p>Check reproducibility, workflow steps, logs, configuration and relevant records. Gather evidence before changing data.</p></div>
-<div class="card"><h3>3. Resolve safely</h3><p>Coordinate with the appropriate owner, obtain required approval for data changes, and follow the applicable change process.</p></div>
-<div class="card"><h3>4. Validate and document</h3><p>Recheck the affected records and application output, confirm the outcome with the user, and document findings or follow-up actions.</p></div>
-</div><p class="small">This describes a general support approach for the portfolio. Use specific case studies to show which steps you actually performed in a given situation.</p></div></section>
+<section class="section" id="analytics">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">06 / Data analytics</div><h2 class="sectionTitle">Turning operational data into useful answers.</h2></div><p class="sectionIntro">The strongest bridge from support to analytics is your existing experience investigating records, validating data and explaining mismatches.</p></div>
+  <div class="grid two">
+   <article class="card"><div class="iconbox">⌕</div><h3>SQL analysis</h3><p>Use queries to retrieve, combine, summarize and compare records. Relevant practice areas include joins, filtering, grouping, subqueries, conditional logic, duplicate detection, missing data checks, date-based analysis and reconciliation.</p><div class="taglist"><span class="tag">JOINs</span><span class="tag">GROUP BY</span><span class="tag">CASE</span><span class="tag">Aggregates</span><span class="tag">CTEs / subqueries as practiced</span><span class="tag">Data validation</span></div></article>
+   <article class="card"><div class="iconbox">▤</div><h3>Excel for analysis</h3><p>Use spreadsheets to inspect exported records, compare lists, filter exceptions, summarize values and prepare data for review. Potential portfolio demonstrations include lookup-based comparison, PivotTables, conditional formatting and cleaning inconsistent fields.</p><div class="taglist"><span class="tag">Filtering & sorting</span><span class="tag">Record comparison</span><span class="tag">Summaries</span><span class="tag">Data checks</span></div><p class="note" style="margin-top:12px">Advanced Excel features should be listed as skills only if you can demonstrate them confidently.</p></article>
+   <article class="card"><div class="iconbox">▥</div><h3>Power BI — learning track</h3><p>Planned learning path: import and transform data with Power Query, build a clean model, define relationships, create measures with DAX, design clear report pages, and validate dashboard totals against source data.</p><div class="taglist"><span class="tag">Power Query</span><span class="tag">Data modelling</span><span class="tag">DAX fundamentals</span><span class="tag">Dashboard design</span></div><span class="pill learn">Learning / portfolio development</span></article>
+   <article class="card"><div class="iconbox">Py</div><h3>Python & pandas — learning track</h3><p>Practice path: load CSV files, inspect data types, handle missing values, remove duplicates, filter records, group and aggregate data, join datasets and export a cleaned dataset for reporting.</p><div class="taglist"><span class="tag">Python fundamentals</span><span class="tag">pandas</span><span class="tag">Data cleaning</span><span class="tag">Exploratory analysis</span></div><span class="pill learn">Learning / portfolio development</span></article>
+  </div>
+  <article class="card" style="margin-top:16px"><div class="projectHeader"><div><h3>ETL fundamentals</h3><p>ETL means Extract, Transform, Load. The workflow moves data from a source, applies cleaning and business rules, then loads the prepared result into a target such as a database or analytics model.</p></div><span class="pill learn">Concepts / learning</span></div><div class="caseFlow"><div class="caseStep"><strong>01 · Extract</strong><span>Read data from CSV exports, application databases or other approved sources.</span></div><div class="caseStep"><strong>02 · Transform</strong><span>Standardize formats, handle nulls, check duplicates, map categories and validate totals.</span></div><div class="caseStep"><strong>03 · Load</strong><span>Load the prepared data to a target table or model and verify row counts and key totals.</span></div></div></article>
+  <div class="callout" style="margin-top:16px"><strong>Analytics positioning:</strong> Professional experience already includes SQL-driven data investigation and validation in support environments. Python, Power BI and ETL are presented as development areas until project work is completed and can be demonstrated.</div>
+ </div>
+</section>
 
-<section id="education"><div class="wrap"><div class="kicker">07 / Education</div><h2>Academic background</h2><div class="grid">
-<div class="card"><h3>B.Tech — Computer Science and Engineering</h3><p>Completed · CGPA: 7.52 / 10</p></div>
-<div class="card"><h3>Diploma — Computer Technology</h3><p>CGPA: 7.28 / 10</p></div>
-<div class="card"><h3>Higher Secondary (12th)</h3><p>State syllabus · 72%</p></div>
-<div class="card"><h3>Secondary (10th)</h3><p>State syllabus · 70%</p></div>
-</div></div></section>
+<section class="section" id="cases">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">07 / Case studies</div><h2 class="sectionTitle">How I approach real support problems.</h2></div><p class="sectionIntro">These are anonymized summaries of issue types described in the work background. No client names, credentials or confidential data are included.</p></div>
+  <div class="grid two">
+   <article class="card"><div class="caseNo">Case study 01 · Financial data</div><h3>Financial report mismatch</h3><p><strong>Problem:</strong> A ledger, profit-and-loss or balance-sheet result did not match expectations after financial records had been entered or changed.</p><div class="caseFlow"><div class="caseStep"><strong>Investigate</strong><span>Check transaction IDs, dates, ledger mapping, voucher type, status flags and opening balances.</span></div><div class="caseStep"><strong>Validate</strong><span>Compare report output with relevant source records and inspect suspicious or missing values.</span></div><div class="caseStep"><strong>Resolve</strong><span>Make only authorized corrections, refresh/recalculate, then verify the report and database.</span></div></div><p class="note" style="margin-top:12px">Outcome focus: traceability, accurate financial data and a verified report result.</p></article>
+   <article class="card"><div class="caseNo">Case study 02 · Build / deployment</div><h3>Application update issue</h3><p><strong>Problem:</strong> An issue appeared after a production build or application update.</p><div class="caseFlow"><div class="caseStep"><strong>Check</strong><span>Review build version, inputs, logs, configuration and database compatibility.</span></div><div class="caseStep"><strong>Isolate</strong><span>Reproduce the issue and compare behavior with the previous known-working build where appropriate.</span></div><div class="caseStep"><strong>Verify</strong><span>Coordinate the update or rollback decision and retest the affected workflow.</span></div></div><p class="note" style="margin-top:12px">Outcome focus: reduce guesswork and confirm the release state before closing the incident.</p></article>
+   <article class="card"><div class="caseNo">Case study 03 · Data quality</div><h3>Incorrect or missing records</h3><p><strong>Problem:</strong> An application displayed incorrect, incomplete, duplicate or inconsistent data.</p><div class="caseFlow"><div class="caseStep"><strong>Compare</strong><span>Compare expected values, source records and application output with SQL.</span></div><div class="caseStep"><strong>Check</strong><span>Inspect IDs, dates, flags, nulls, duplicates and linked records.</span></div><div class="caseStep"><strong>Correct</strong><span>Validate authority and impact, apply approved correction, then recheck related workflows.</span></div></div><p class="note" style="margin-top:12px">Outcome focus: data integrity and a documented reason for the correction.</p></article>
+   <article class="card"><div class="caseNo">Case study 04 · Implementation</div><h3>Client onboarding & workflow support</h3><p><strong>Problem:</strong> Users needed help adopting a new or updated application workflow.</p><div class="caseFlow"><div class="caseStep"><strong>Understand</strong><span>Gather requirements and map the user's operational process to application modules.</span></div><div class="caseStep"><strong>Set up</strong><span>Assist configuration, workflow checks, installation and user/access readiness.</span></div><div class="caseStep"><strong>Enable</strong><span>Train users, answer questions and follow up after implementation.</span></div></div><p class="note" style="margin-top:12px">Outcome focus: smoother adoption, clearer user understanding and fewer avoidable support issues.</p></article>
+  </div>
+ </div>
+</section>
 
-<section id="contact"><div class="wrap"><div class="contactbox"><div class="kicker" style="color:#bfd6ff">Contact</div><h2>Let's connect</h2><p>I'm interested in opportunities related to Technical Support, Application Support, Production Support, SQL Support and junior data analytics.</p><div class="contact-links"><a href="mailto:YOUR.EMAIL@example.com">akshaykumarvakayar@gmail.com</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">www.linkedin.com/in/er-9739akshay</a><a href="#home">Back to top ↑</a></div><p style="font-size:.88rem;margin-top:18px"></p></div></div></section>
+<section class="section" id="projects">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">08 / Projects</div><h2 class="sectionTitle">Portfolio projects to demonstrate capability.</h2></div><p class="sectionIntro">Project descriptions distinguish work experience from planned or in-progress learning projects. Add actual files and verified results as you complete them.</p></div>
+  <div class="grid two">
+   <article class="card">
+    <div class="projectHeader"><h3>Fintech Support Data Analysis</h3><span class="pill learn">Practice project</span></div>
+    <p>Use a sample fintech-support database with customer and transaction tables to answer operational questions and demonstrate SQL analysis.</p>
+    <div class="projectMeta"><span>◷ SQL / MySQL</span><span>◈ Data quality</span><span>▦ Reporting questions</span></div>
+    <strong>Questions to answer</strong><ul class="clean"><li>How many transactions occur by status, type and date?</li><li>What is the transaction value by period or customer segment?</li><li>Which records are duplicated, missing key values or inconsistent?</li><li>Do customer and transaction references reconcile correctly?</li><li>What trends or exceptions would be useful to an operations team?</li></ul>
+    <strong style="display:block;margin-top:15px">Example SQL pattern</strong>
+    <pre class="code">SELECT status,
+       COUNT(*) AS transaction_count,
+       SUM(amount) AS total_amount
+FROM transactions
+GROUP BY status
+ORDER BY transaction_count DESC;</pre>
+    <p class="note" style="margin-top:12px">Illustrative query only; adapt column and table names to the actual practice schema. Do not present results until executed against your dataset.</p>
+   </article>
+   <article class="card">
+    <div class="projectHeader"><h3>Data Quality & Reconciliation Toolkit</h3><span class="pill learn">Suggested project</span></div>
+    <p>A reusable set of SQL checks inspired by real application support work. The aim is to identify data problems early and show how an issue is validated.</p>
+    <ul class="clean"><li>Duplicate primary/business-key checks.</li><li>Missing required values and invalid date checks.</li><li>Orphan reference checks between related tables.</li><li>Before/after comparison for approved changes.</li><li>Count and total reconciliation between source and target.</li><li>A short findings report with issue, evidence, impact and next action.</li></ul>
+    <div class="divider"></div><strong>Deliverables to add</strong><div class="taglist"><span class="tag">SQL script</span><span class="tag">Sample CSV</span><span class="tag">Test evidence</span><span class="tag">Findings summary</span><span class="tag">Screenshots</span></div>
+   </article>
+   <article class="card">
+    <div class="projectHeader"><h3>Power BI Operations Dashboard</h3><span class="pill learn">Learning project</span></div>
+    <p>Build a dashboard from a safe sample dataset to show transaction volume, status distribution, daily trends, exception counts and key performance indicators.</p>
+    <ul class="clean"><li>Prepare data in Power Query and document cleaning steps.</li><li>Model relationships and create basic measures.</li><li>Build overview, trends and exception-detail pages.</li><li>Validate dashboard totals against SQL results.</li></ul>
+    <p class="note" style="margin-top:12px">Mark as completed only after the report is built and tested. Add a screenshot or published portfolio-safe file when available.</p>
+   </article>
+   <article class="card">
+    <div class="projectHeader"><h3>Python Data Cleaning Notebook</h3><span class="pill learn">Learning project</span></div>
+    <p>Use Python and pandas to inspect and clean a sample CSV, summarize patterns and export a quality-checked file.</p>
+    <ul class="clean"><li>Inspect shape, column types and descriptive statistics.</li><li>Profile missing values and duplicates.</li><li>Standardize fields and filter invalid records.</li><li>Group data by a relevant category or date.</li><li>Export cleaned data and document decisions.</li></ul>
+    <p class="note" style="margin-top:12px">This is a project plan until you have a notebook and verified output to show.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="workflow">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">09 / Troubleshooting workflow</div><h2 class="sectionTitle">Repeatable, careful, and evidence-led.</h2></div><p class="sectionIntro">Especially important when working with production applications and financial or patient-related records.</p></div>
+  <div class="grid two">
+   <article class="card"><h3>Common checks from support experience</h3><ul class="clean"><li>MySQL timeouts and too many active connections.</li><li>Application/server availability and AWS environment checks.</li><li>IIS configuration and port-related issues; checking whether security software blocks an executable.</li><li>Build, configuration, input and database compatibility checks.</li><li>Duplicate ledger names, incorrect dates or unexpected default values.</li><li>Import status, tax-related checks and data reconciliation.</li><li>Investigating status flags or pending records that affect workflow results.</li></ul></article>
+   <article class="card"><h3>Production data safeguards</h3><ul class="clean"><li>Understand business impact and confirm the affected record set.</li><li>Use read-only investigation first wherever possible.</li><li>Confirm authorization before any production data change.</li><li>Take the appropriate backup / recovery precautions according to team process.</li><li>Keep changes narrowly scoped and validate affected relationships.</li><li>Retest through the application and check relevant reports after correction.</li><li>Document evidence, decisions, validation and escalation clearly.</li></ul></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="education">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">10 / Education</div><h2 class="sectionTitle">Education & foundation.</h2></div></div>
+  <div class="grid two">
+   <article class="card"><div class="edu"><div class="eduYear">B.Tech</div><div><h3>B.Tech — Computer Science & Engineering</h3><p>CGPA: 7.52 · Academic completion recorded in September 2024.</p></div></div></article>
+   <article class="card"><div class="edu"><div class="eduYear">Diploma</div><div><h3>Diploma — Computer Technology</h3><p>CGPA: 7.28.</p></div></div></article>
+   <article class="card"><div class="edu"><div class="eduYear">12th</div><div><h3>Higher Secondary</h3><p>State syllabus · 72%.</p></div></div></article>
+   <article class="card"><div class="edu"><div class="eduYear">10th</div><div><h3>Secondary School</h3><p>State syllabus · 70%.</p></div></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="career">
+ <div class="wrap">
+  <div class="sectionHead"><div><div class="kicker">11 / Career direction</div><h2 class="sectionTitle">Roles I can target.</h2></div><p class="sectionIntro">Prioritize roles that match the strongest evidence in my experience, while growing toward analytics roles with demonstrable projects.</p></div>
+  <div class="grid three">
+   <article class="card"><h3>Application / Production Support</h3><p>Application Support Engineer, Technical Support Engineer, L1/L2 Support, Production Support Analyst, SQL Support Analyst.</p><span class="pill pro">Direct experience alignment</span></article>
+   <article class="card"><h3>Implementation / ERP Support</h3><p>Software Implementation Engineer, ERP Support Analyst, Application Implementation Specialist, Product Support Engineer.</p><span class="pill pro">Direct experience alignment</span></article>
+   <article class="card"><h3>Data Analytics pathway</h3><p>SQL-focused Data Analyst, Junior Data Analyst or Reporting Analyst roles where strong SQL and data validation are relevant and tool requirements match demonstrated skills.</p><span class="pill learn">Build projects first</span></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="contact">
+ <div class="wrap">
+  <div class="contact">
+   <div><div class="kicker">12 / Contact</div><h2 class="sectionTitle">Let’s discuss a role or project.</h2><p class="sectionIntro" style="margin-top:14px">I’m interested in opportunities where application troubleshooting, SQL-based investigation, testing, implementation and analytical thinking can help solve practical problems.</p><div class="heroActions"><a class="btn primary" href="mailto:akshaykumarvakayar@gmail.com">Email me ↗</a><a class="btn secondary" href="https://www.linkedin.com/in/er-9739akshay" target="_blank" rel="noopener">LinkedIn ↗</a></div></div>
+   <div class="contactLinks">
+    <a class="contactLink" href="mailto:akshaykumarvakayar@gmail.com"><small>Email</small><strong>akshaykumarvakayar@gmail.com</strong></a>
+    <a class="contactLink" href="https://www.linkedin.com/in/er-9739akshay" target="_blank" rel="noopener"><small>LinkedIn</small><strong>linkedin.com/in/er-9739akshay</strong></a>
+    <div class="contactLink"><small>Location</small><strong>Kerala, India</strong></div>
+    <div class="contactLink"><small>Resume PDF</small><strong>Place your approved resume PDF beside this HTML file as <code>Akshay_Kumar_Resume.pdf</code> and add a link here if desired.</strong></div>
+   </div>
+  </div>
+ </div>
+</section>
 </main>
-<footer><div class="wrap">© 2026 Akshay Kumar · Professional portfolio ·</div></footer>
+<footer><div class="wrap foot"><span>© <span id="year"></span> Akshay Kumar · Professional Portfolio</span><span>Built to present verified experience and clearly labelled learning projects.</span></div></footer>
+<button class="top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('navlinks');
+menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+</script>
 </body>
 </html>
